@@ -1,3 +1,5 @@
+// Funciones de google maps
+
 var map;
 var infoWindow;
 
@@ -27,7 +29,11 @@ function callback(results, status){
   if(status === google.maps.places.PlacesServiceStatus.OK){
     for(i=0; i<results.length; i++){
       createMarker(results[i]);
-      console.log(results[i]);
+      filterName(results[i]);
+      filterRating(results[i]);
+      filterAddress(results[i]);
+      paintDom(results[i]); 
+      // console.log(results[i]);
     }
   }
 }
@@ -45,5 +51,23 @@ function createMarker(place){
  });
 }
 
+// Funciones para filtrar
 
-//google.maps.event.addDomListener(window, 'load', initialize);
+let nameKey;
+let ratingKey;
+let addressKey;
+
+window.filterName = (results) => {
+  nameKey= results.name;
+  // console.log(nameKey);
+  }
+
+window.filterRating = (results) => {
+  ratingKey = results.rating;
+  // console.log(ratingKey);
+}
+
+window.filterAddress = (results) => {
+  addressKey = results.vicinity;
+  // console.log(addressKey);
+}
