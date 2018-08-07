@@ -1,4 +1,5 @@
 var map;
+var infoWindow;
 
 function initialize() {
   var center = new google.maps.LatLng(19.4326077, -99.13320799999997);
@@ -14,13 +15,15 @@ var request = {
   types: ['bar']
 };
 
+infoWindow = new google.maps.InfoWindow();
+
 var service = new google.maps.places.PlacesService(map);
 
 service.nearbySearch(request, callback);
 
 }
 
-const callback = (results, status) => {
+function callback(results, status){
   if(status === google.maps.places.PlacesServiceStatus.OK){
     for(i=0; i<results.length; i++){
       createMarker(results[i]);
@@ -29,11 +32,16 @@ const callback = (results, status) => {
   }
 }
 
-const createMarker = (place) => {
-  let placeLoc = place.geometry.location;
-  let market = new google.maps.Marker({
+function createMarker(place){
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
+ });
+
+ google.maps.event.addListener(marker, 'click', function(){
+   infoWindow.setContent(place.name);
+   infoWindow.open(map, this);
  });
 }
 

@@ -49,6 +49,7 @@
   font-size: 60px;
   font-family: 'Kalam', cursive;
   text-align: center;
+  color: white;
   
 }
 
@@ -66,10 +67,17 @@
     margin: 0;
     padding: 0;
     background-color: black;
-    color: white;
   }
 
   h1 {
+      margin-top: 6%;
       font-family: 'Kalam', cursive;
       text-align: center;
+      color: white;
+  }
+
+  .input{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
