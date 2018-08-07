@@ -81,3 +81,11 @@
     margin-left: 5%;
     margin-right: 5%;
   }
+
+  div a:hover{
+    color: #FF3545;
+  }
+
+  #paint-list{
+    color: #ccc;
+  }
