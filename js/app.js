@@ -26,15 +26,18 @@ service.nearbySearch(request, callback);
 }
 
 function callback(results, status){
+  // let restName = "";
   if(status === google.maps.places.PlacesServiceStatus.OK){
     for(i=0; i<results.length; i++){
       createMarker(results[i]);
       filterName(results[i]);
+      console.log(namePrint);
       filterRating(results[i]);
       filterAddress(results[i]);
-      paintDom(results[i]); 
+      // paintDom(results[i]); 
       // console.log(results[i]);
     }
+
   }
 }
 
@@ -53,12 +56,16 @@ function createMarker(place){
 
 // Funciones para filtrar
 
-let nameKey;
+let nameKey= "";
 let ratingKey;
 let addressKey;
+let namePrint ="";
 
 window.filterName = (results) => {
-  nameKey= results.name;
+  nameKey = results.name;
+  namePrint += `<li>
+  <a href="">${nameKey}</a>
+  </li> `;
   // console.log(nameKey);
   }
 
